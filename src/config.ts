@@ -25,7 +25,7 @@ export const config: Partial<ITractJsLiteConfig> = {
 
 export const setOption = (options: ITractJsLiteOption) => {
   Object.keys(options).forEach((key) => {
-    config[key as keyof ITractJsLiteOption] ===
+    (config[key as keyof ITractJsLiteOption] as any) =
       options[key as keyof ITractJsLiteOption];
   });
 };
