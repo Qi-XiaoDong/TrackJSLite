@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">点击</button>
+    <button id="pro-btn">异步错误</button>
+    <script src="./lib/index.umd.js"></script>
+    <script>
+      TractJsLite.init({});
+      const btnClick = () => {
+        const a = undefined;
+        a.toString();
+      };
+      const OBtn = document.getElementById("btn");
+      OBtn.addEventListener("click", btnClick);
+
+      const proBtnClick = () => {
+        Promise.reject("异步错误");
+      };
+      const OProBtn = document.getElementById("pro-btn");
+      OProBtn.addEventListener("click", proBtnClick);
+    </script>
+  </body>
+</html>
