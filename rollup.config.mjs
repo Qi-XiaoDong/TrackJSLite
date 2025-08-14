@@ -14,6 +14,12 @@ export default defineConfig({
       format: "esm",
       sourcemap: true,
     },
+    // 输出 CommonJS 模块（适合 Node.js）
+    {
+      file: "lib/index.cjs.js",
+      format: "cjs",
+      sourcemap: true,
+    },
     // 输出 UMD 模块（适合浏览器直接引入）
     {
       file: "lib/index.umd.js",
