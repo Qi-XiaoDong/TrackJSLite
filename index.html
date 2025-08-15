@@ -8,6 +8,7 @@
   <body>
     <button id="btn">点击</button>
     <button id="pro-btn">异步错误</button>
+    <img src="./assets/404.png" />
     <script src="./lib/index.umd.js"></script>
     <script>
       TractJsLite.init({});
@@ -19,7 +20,7 @@
       OBtn.addEventListener("click", btnClick);
 
       const proBtnClick = () => {
-        Promise.reject("异步错误");
+        Promise.reject(Error("promise error"));
       };
       const OProBtn = document.getElementById("pro-btn");
       OProBtn.addEventListener("click", proBtnClick);
