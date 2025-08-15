@@ -1,49 +1,49 @@
 {
-  "name": "track-js-lite",
-  "version": "1.0.0",
-  "description": "针对允许的JS错误进行上报的轻量级库",
-  "main": "lib/index.cjs.js",
-  "module": "lib/index.esm.js",
-  "types": "lib/index.d.ts",
-  "type": "module",
-  "files": [
-    "lib"
-  ],
-  "exports": {
-    ".": {
-      "import": "./lib/index.esm.js",
-      "require": "./lib/index.cjs.js",
-      "types": "./lib/index.d.ts"
+    "name": "track-js-lite",
+    "version": "1.0.0",
+    "description": "针对允许的JS错误进行上报的轻量级库",
+    "main": "lib/index.cjs.js",
+    "module": "lib/index.esm.js",
+    "types": "lib/declaration/index.d.ts",
+    "type": "module",
+    "files": [
+        "lib"
+    ],
+    "exports": {
+        ".": {
+            "import": "./lib/index.esm.js",
+            "require": "./lib/index.cjs.js",
+            "types": "./lib/declaration/index.d.ts"
+        }
     },
-    "./global": {
-      "types": "./lib/types/global.d.ts"
+    "scripts": {
+        "build": "rollup -c --environment BUILD:production",
+        "watch": "rollup -c -w"
+    },
+    "keywords": [
+        "Sentry",
+        "BugSnag",
+        "RollBar",
+        "RollBar",
+        "fundebug",
+        "frontjs",
+        "webfunny"
+    ],
+    "author": {
+        "email": "qxdwork@aliyun.com",
+        "name": "qixiaodong"
+    },
+    "license": "ISC",
+    "dependencies": {},
+    "devDependencies": {
+        "typescript": "^5.9.2",
+        "@rollup/plugin-commonjs": "^28.0.6",
+        "@rollup/plugin-json": "^6.1.0",
+        "@rollup/plugin-node-resolve": "^16.0.1",
+        "@rollup/plugin-terser": "^0.4.4",
+        "@rollup/plugin-typescript": "^12.1.4",
+        "@types/node": "^24.2.1",
+        "rollup": "^4.46.2",
+        "tslib": "^2.8.1"
     }
-  },
-  "scripts": {
-    "build": "rollup -c",
-    "watch": "rollup -c -w"
-  },
-  "keywords": [
-    "Sentry",
-    "BugSnag",
-    "RollBar",
-    "RollBar",
-    "fundebug",
-    "frontjs",
-    "webfunny"
-  ],
-  "author": "qxd",
-  "license": "ISC",
-  "dependencies": {
-    "typescript": "^5.9.2"
-  },
-  "devDependencies": {
-    "@rollup/plugin-commonjs": "^28.0.6",
-    "@rollup/plugin-json": "^6.1.0",
-    "@rollup/plugin-node-resolve": "^16.0.1",
-    "@rollup/plugin-typescript": "^12.1.4",
-    "@types/node": "^24.2.1",
-    "rollup": "^4.46.2",
-    "tslib": "^2.8.1"
-  }
 }

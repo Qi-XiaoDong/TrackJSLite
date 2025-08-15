@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <button id="btn">点击</button>
-    <button id="pro-btn">异步错误</button>
-    <img src="./assets/404.png" />
-    <script src="./lib/index.umd.js"></script>
-    <script>
-      TractJsLite.init({});
-      const btnClick = () => {
-        const a = undefined;
-        a.toString();
-      };
-      const OBtn = document.getElementById("btn");
-      OBtn.addEventListener("click", btnClick);
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <button id="btn" class="btn-class">点击</button>
+        <button id="pro-btn">异步错误</button>
+        <img src="./assets/404.png" />
+        <script src="./lib/index.umd.js"></script>
+        <script>
+            TractJsLite.init({})
+            const bb = { a: 1 }
+            const btnClick = () => {
+                const a = undefined
+                a.toString()
+            }
+            const OBtn = document.getElementById('btn')
+            OBtn.addEventListener('click', btnClick)
 
-      const proBtnClick = () => {
-        Promise.reject(Error("promise error"));
-      };
-      const OProBtn = document.getElementById("pro-btn");
-      OProBtn.addEventListener("click", proBtnClick);
-    </script>
-  </body>
+            const proBtnClick = () => {
+                Promise.reject(Error('promise error'))
+            }
+            const OProBtn = document.getElementById('pro-btn')
+            OProBtn.addEventListener('click', proBtnClick)
+        </script>
+    </body>
 </html>
