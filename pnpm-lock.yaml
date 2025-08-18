@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      uuid:
+        specifier: ^11.1.0
+        version: 11.1.0
     devDependencies:
       '@rollup/plugin-commonjs':
         specifier: ^28.0.6
@@ -331,6 +335,10 @@ packages:
   undici-types@7.10.0:
     resolution: {integrity: sha512-t5Fy/nfn+14LuOc2KNYg75vZqClpAiqscVvMygNnlsHBFpSXdJaYtXMcdNLpl/Qvc3P2cB3s6lOV51nqsFq4ag==}
 
+  uuid@11.1.0:
+    resolution: {integrity: sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A==}
+    hasBin: true
+
 snapshots:
 
   '@jridgewell/gen-mapping@0.3.13':
@@ -581,3 +589,5 @@ snapshots:
   typescript@5.9.2: {}
 
   undici-types@7.10.0: {}
+
+  uuid@11.1.0: {}

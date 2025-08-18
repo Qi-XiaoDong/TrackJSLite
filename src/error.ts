@@ -2,7 +2,7 @@ import { config } from './config'
 import { getLastCaptureEvent } from './utils/captureEvent'
 import { parseErrorStack } from './utils/parseError'
 import { getPaths } from './utils/parsePath'
-import { getBrowserInfo } from './utils/getBrowserInfo'
+import { saveErrorToLocal, type IErrorData } from './report'
 
 /**
  * 错误捕获
@@ -48,7 +48,8 @@ function promiseErrorTrack(event: PromiseRejectionEvent) {
         timeStamp: new Date().toISOString(), // 发生时间
         paths, // 事件路径
     }
-    console.log(errObj, 'promiseError--trackJsLite')
+    saveErrorToLocal(errObj as IErrorData)
+
     // 上报promise错误 todo...
 }
 
@@ -67,7 +68,8 @@ function vueErrorHandler(err: any, vm: any, info: any) {
         selector: '', // css选择器，后期扩展
         paths, // 事件路径
     }
-    console.log(composeErrorInfo(errObj), 'vueError-trackJsLite')
+    saveErrorToLocal(errObj as IErrorData)
+
     //上报vue错误 todo...
 }
 function JsErrorHandler(event: ErrorEvent) {
@@ -85,33 +87,20 @@ function JsErrorHandler(event: ErrorEvent) {
         selector: '', // css选择器，后期扩展
         paths, // 事件路径
     }
-    console.log(composeErrorInfo(errObj), 'jsError--trackJsLite')
+    saveErrorToLocal(errObj as IErrorData)
+
     //上报js错误 todo...
 }
 
 function sourceErrorHandler(target: any) {
-    const data = {
+    const errObj = {
         errorType: 'resourceError',
         filename: target.src || target.href,
         tagName: target.tagName,
         message: `加载${target.tagName}失败`,
     }
-    console.log(composeErrorInfo(data), '资源错误--trackJsLite')
+
+    saveErrorToLocal(errObj as unknown as IErrorData)
 
     // 上报资源错误 todo...
-}
-
-/**
- * 组合错误信息
- * @param error 错误对象
- */
-function composeErrorInfo(error: Record<string, string | number | undefined>): Record<string, string | number | undefined> {
-    const browserInfo = config.ua ? getBrowserInfo() : {}
-    return {
-        ...error,
-        ...browserInfo,
-        appId: config.appId, // 应用ID
-        reportUrl: config.reportUrl, // 上报地址
-        timeStamp: new Date().toISOString(), // 发生时间
-    }
 }

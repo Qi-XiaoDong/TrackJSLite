@@ -3,21 +3,25 @@ export interface ITractJsLiteOption {
     reportUrl: string
     //是否全埋点
     trackerAll?: boolean
-    ua?: boolean
     vue?: {
         Vue: any
         router: any
     }
+    reportHandler?: (data: any) => void
 }
 
-export const config: Partial<ITractJsLiteOption> = {
+interface ITractJsLiteConfig extends ITractJsLiteOption {
+    ua: string
+}
+
+export const config: Partial<ITractJsLiteConfig> = {
     //是否全埋点
     trackerAll: true,
     vue: {
         Vue: null,
         router: null,
     },
-    ua: true,
+    ua: navigator.userAgent,
 }
 
 export const setOption = (options: ITractJsLiteOption) => {

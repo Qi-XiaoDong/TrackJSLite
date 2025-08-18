@@ -31,3 +31,5 @@ export function getBrowserInfo() {
 
     return { 'system-os': os, 'system-browser': browser, 'system-browser-version': version, ua }
 }
+
+export const browserInfo = getBrowserInfo()
